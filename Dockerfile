@@ -13,7 +13,7 @@ FROM alpine:3.24
 RUN apk add --no-cache ca-certificates
 WORKDIR /
 # Copy the compiled OTEL Collector binary from the builder stage
-COPY --from=builder /app/dist/otel-collector-prosegur /otel-collector
+COPY --from=builder /app/dist/otel-collector-xf /otel-collector
 
 # Exponemos los puertos típicos de OTel si hicieran falta
 EXPOSE 4317 4318 55679
