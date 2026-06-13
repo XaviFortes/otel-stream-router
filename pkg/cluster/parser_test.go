@@ -16,21 +16,21 @@ func TestParseClusterName(t *testing.T) {
 		{
 			name:         "Cluster de Produccion Labor",
 			clusterInput: "EMEAWELABORPAKS",
-			expectedBiz:  "LABOR",
+			expectedBiz:  "labor",
 			expectedEnv:  "p", // Lo normalizamos a minúscula
 			expectError:  false,
 		},
 		{
 			name:         "Cluster de Desarrollo Logistica",
 			clusterInput: "EMEAWELOGISTICSDAKS",
-			expectedBiz:  "LOGISTICS",
+			expectedBiz:  "logistics",
 			expectedEnv:  "d",
 			expectError:  false,
 		},
 		{
 			name:         "Cluster con nombre entero",
 			clusterInput: "EMEAWEGPAHAKS-01-admin",
-			expectedBiz:  "GPA",
+			expectedBiz:  "gpa",
 			expectedEnv:  "h",
 			expectError:  true,
 		},
@@ -44,7 +44,14 @@ func TestParseClusterName(t *testing.T) {
 		{
 			name:         "Cluster con naming descriptivo",
 			clusterInput: "EMAZ-DEVOPS-TOOLS-P-GPA-AGENT-01",
-			expectedBiz:  "GPA",
+			expectedBiz:  "devops-tools",
+			expectedEnv:  "p",
+			expectError:  false,
+		},
+		{
+			name:         "Cluster EMAZ complejo",
+			clusterInput: "emaz-devops-tools-p-pga-agent-01-aks-admin",
+			expectedBiz:  "devops-tools",
 			expectedEnv:  "p",
 			expectError:  false,
 		},
