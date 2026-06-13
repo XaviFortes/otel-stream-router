@@ -3,6 +3,7 @@ package routerprocessor
 import (
 	"context"
 	"os"
+	"strings"
 
 	"go.opentelemetry.io/collector/pdata/plog"
 
@@ -56,8 +57,8 @@ func (r *customRouter) processLogs(ctx context.Context, logs plog.Logs) (plog.Lo
 		// k8sattributes suele inyectarlo como "k8s.namespace.labels.proyecto".
 		// Podrías hacer un attrs.Get() de eso para agrupar namespaces distintos.
 
-		// 2. Construimos el nombre del stream: ej. "pagos-p" o "namespace-unknown"
-		streamName := namespace + "-" + r.env
+		// 2. Construimos el nombre del stream con namespace + negocio + entorno.
+		streamName := buildStreamName(r.defaultStream, namespace, r.biz, r.env)
 
 		// 3. Inyectamos el resultado como un nuevo atributo en el log.
 		// attrs.PutStr("x_custom_stream", streamName)
@@ -65,4 +66,24 @@ func (r *customRouter) processLogs(ctx context.Context, logs plog.Logs) (plog.Lo
 	}
 
 	return logs, nil
+}
+
+func buildStreamName(defaultStream, namespace, business, environment string) string {
+	parts := make([]string, 0, 3)
+
+	if namespace != "" {
+		parts = append(parts, namespace)
+	} else if defaultStream != "" {
+		parts = append(parts, defaultStream)
+	}
+
+	if business != "" && business != "unknown" {
+		parts = append(parts, business)
+	}
+
+	if environment != "" && environment != "unknown" {
+		parts = append(parts, strings.ToLower(environment))
+	}
+
+	return strings.Join(parts, "-")
 }
