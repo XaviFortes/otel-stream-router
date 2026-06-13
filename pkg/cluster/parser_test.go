@@ -14,22 +14,22 @@ func TestParseClusterName(t *testing.T) {
 		expectError  bool   // ¿Debería dar error?
 	}{
 		{
-			name:         "Cluster de Produccion Cash",
-			clusterInput: "EMAZWECASHPAKS",
-			expectedBiz:  "CASH",
+			name:         "Cluster de Produccion Labor",
+			clusterInput: "EMEAWELABORPAKS",
+			expectedBiz:  "LABOR",
 			expectedEnv:  "p", // Lo normalizamos a minúscula
 			expectError:  false,
 		},
 		{
 			name:         "Cluster de Desarrollo Logistica",
-			clusterInput: "EMAZWELOGISTICSDAKS",
+			clusterInput: "EMEAWELOGISTICSDAKS",
 			expectedBiz:  "LOGISTICS",
 			expectedEnv:  "d",
 			expectError:  false,
 		},
 		{
 			name:         "Cluster con nombre entero",
-			clusterInput: "EMAZWEPGAHAKS-01-admin",
+			clusterInput: "EMEAWEGPAHAKS-01-admin",
 			expectedBiz:  "PGA",
 			expectedEnv:  "h",
 			expectError:  true,
@@ -40,6 +40,13 @@ func TestParseClusterName(t *testing.T) {
 			expectedBiz:  "",
 			expectedEnv:  "",
 			expectError:  true,
+		},
+		{
+			name:         "Cluster con naming descriptivo",
+			clusterInput: "EMEA-XD-ASD-P-GPA-AGENT-01",
+			expectedBiz:  "GPA",
+			expectedEnv:  "p",
+			expectError:  false,
 		},
 	}
 
