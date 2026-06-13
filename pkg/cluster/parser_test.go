@@ -30,7 +30,7 @@ func TestParseClusterName(t *testing.T) {
 		{
 			name:         "Cluster con nombre entero",
 			clusterInput: "EMEAWEGPAHAKS-01-admin",
-			expectedBiz:  "PGA",
+			expectedBiz:  "GPA",
 			expectedEnv:  "h",
 			expectError:  true,
 		},
