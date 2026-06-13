@@ -3,8 +3,8 @@ package routerprocessor
 import (
 	"context"
 	"os"
-	"strings"
 	"regexp"
+	"strings"
 
 	"go.opentelemetry.io/collector/pdata/plog"
 
