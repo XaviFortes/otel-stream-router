@@ -13,10 +13,16 @@ extensions:
 processors:
   - import: go.opentelemetry.io/collector/processor/batchprocessor
     gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.154.0
+
   - import: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourceprocessor
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourceprocessor v0.154.0
+
   - import: go.opentelemetry.io/collector/processor/memorylimiterprocessor
     gomod: go.opentelemetry.io/collector/processor/memorylimiterprocessor v0.154.0
+
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor v0.154.0
+
   - import: github.com/xavifortes/otel-stream-router/pkg/routerprocessor
     gomod: github.com/xavifortes/otel-stream-router v0.0.0
     path: ./
