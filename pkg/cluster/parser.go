@@ -11,7 +11,7 @@ import (
 var clusterRegex = regexp.MustCompile(`^[A-Z]{6}([A-Z]+)([A-Z])AKS$`)
 
 // Algunos clusters usan un naming más descriptivo.
-// Ejemplo: EMAZ-DEVOPS-TOOLS-P-PGA-AGENT-01 => business=PGA, environment=P
+// Ejemplo: EMAZ-DEVOPS-TOOLS-P-GPA-AGENT-01 => business=GPA, environment=P
 var clusterRegexAlt = regexp.MustCompile(`^EMAZ-DEVOPS-TOOLS-([A-Z])-([A-Z]+)-AGENT-[0-9]+$`)
 
 // ParseClusterName extrae el negocio y el entorno del nombre del clúster.

@@ -43,7 +43,7 @@ func TestParseClusterName(t *testing.T) {
 		},
 		{
 			name:         "Cluster con naming descriptivo",
-			clusterInput: "EMEA-XD-ASD-P-GPA-AGENT-01",
+			clusterInput: "EMEA-DEVOPS-TOOLS-P-GPA-AGENT-01",
 			expectedBiz:  "GPA",
 			expectedEnv:  "p",
 			expectError:  false,
