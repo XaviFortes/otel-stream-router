@@ -7,11 +7,11 @@ import (
 func TestParseClusterName(t *testing.T) {
 	// Definimos nuestra tabla de pruebas
 	tests := []struct {
-		name          string // Nombre del test
-		clusterInput  string // Lo que le pasamos a la función
-		expectedBiz   string // Negocio esperado
-		expectedEnv   string // Entorno esperado
-		expectError   bool   // ¿Debería dar error?
+		name         string // Nombre del test
+		clusterInput string // Lo que le pasamos a la función
+		expectedBiz  string // Negocio esperado
+		expectedEnv  string // Entorno esperado
+		expectError  bool   // ¿Debería dar error?
 	}{
 		{
 			name:         "Cluster de Produccion Cash",
@@ -26,6 +26,13 @@ func TestParseClusterName(t *testing.T) {
 			expectedBiz:  "LOGISTICS",
 			expectedEnv:  "d",
 			expectError:  false,
+		},
+		{
+			name:         "Cluster con nombre entero",
+			clusterInput: "EMAZWEPGAHAKS-01-admin",
+			expectedBiz:  "PGA",
+			expectedEnv:  "h",
+			expectError:  true,
 		},
 		{
 			name:         "Cluster con formato basura",
