@@ -34,6 +34,9 @@ receivers:
   # Add OTLP
   - import: go.opentelemetry.io/collector/receiver/otlpreceiver
     gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.154.0
+  # Add Jaeger receiver to receive traces from Jaeger clients
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jaegerreceiver
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jaegerreceiver v0.154.0
   # Add Zipkin receiver to receive traces from Zipkin clients
   - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver v0.154.0
