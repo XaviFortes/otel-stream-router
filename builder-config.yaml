@@ -7,22 +7,37 @@ dist:
 extensions:
   - import: github.com/open-telemetry/opentelemetry-collector-contrib/extension/headerssetterextension
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/headerssetterextension v0.154.0
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckextension
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckextension v0.154.0
 
 processors:
   - import: go.opentelemetry.io/collector/processor/batchprocessor
     gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.154.0
-
-  # TU PROCESADOR CUSTOM: Apuntamos al modulo local
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourceprocessor
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourceprocessor v0.154.0
+  - import: go.opentelemetry.io/collector/processor/memorylimiterprocessor
+    gomod: go.opentelemetry.io/collector/processor/memorylimiterprocessor v0.154.0
   - import: github.com/xavifortes/otel-stream-router/pkg/routerprocessor
     gomod: github.com/xavifortes/otel-stream-router v0.0.0
     path: ./
 
 receivers:
-  # El receptor estandar para tragar logs de ficheros de K8s (/var/log/pods)
+  # Add filelog receiver to receive logs from files
   - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver v0.154.0
+  # Add OTLP
+  - import: go.opentelemetry.io/collector/receiver/otlpreceiver
+    gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.154.0
+  # Add Zipkin receiver to receive traces from Zipkin clients
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver v0.154.0
+  # Add prometheus receiver to scrape metrics from Prometheus endpoints
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver v0.154.0
 
 exporters:
   # El exporter HTTP estandar para escupir los datos a OpenObserve
   - import: go.opentelemetry.io/collector/exporter/otlphttpexporter
     gomod: go.opentelemetry.io/collector/exporter/otlphttpexporter v0.154.0
+  - import: go.opentelemetry.io/collector/exporter/debugexporter
+    gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.154.0
