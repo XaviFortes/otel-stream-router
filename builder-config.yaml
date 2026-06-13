@@ -1,0 +1,24 @@
+dist:
+  name: otel-collector-xf
+  description: OTel Collector with Dynamic router
+  output_path: ./dist
+  otelcol_version: 0.154.0
+
+processors:
+  - import: go.opentelemetry.io/collector/processor/batchprocessor
+    gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.154.0
+
+  # TU PROCESADOR CUSTOM: Apuntamos al modulo local
+  - import: github.com/xavifortes/otel-stream-router/pkg/routerprocessor
+    gomod: github.com/xavifortes/otel-stream-router v0.0.0
+    path: ./
+
+receivers:
+  # El receptor estandar para tragar logs de ficheros de K8s (/var/log/pods)
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver v0.154.0
+
+exporters:
+  # El exporter HTTP estandar para escupir los datos a OpenObserve
+  - import: go.opentelemetry.io/collector/exporter/otlphttpexporter
+    gomod: go.opentelemetry.io/collector/exporter/otlphttpexporter v0.154.0
