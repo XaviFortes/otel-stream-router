@@ -79,14 +79,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       
+      - name: Set image names
+        run: echo "REGISTRY_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+      
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
           tags: |
-            ghcr.io/${{ github.repository_owner }}/otel-stream-router:latest
-            ghcr.io/${{ github.repository_owner }}/otel-stream-router:${{ github.sha }}
+            ghcr.io/${{ env.REGISTRY_OWNER }}/otel-stream-router:latest
+            ghcr.io/${{ env.REGISTRY_OWNER }}/otel-stream-router:${{ github.sha }}
           labels: |
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
