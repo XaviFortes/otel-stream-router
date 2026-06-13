@@ -45,14 +45,14 @@ func (r *customRouter) processLogs(ctx context.Context, logs plog.Logs) (plog.Lo
 		rs := logs.ResourceLogs().At(i)
 		attrs := rs.Resource().Attributes()
 
-		// 1. Intentamos sacar el namespace. El procesador k8sattributes estándar 
+		// 1. Intentamos sacar el namespace. El procesador k8sattributes estándar
 		// de OTel inyecta este dato automáticamente antes de que llegue a nosotros.
 		namespace := r.defaultStream
 		if val, ok := attrs.Get("k8s.namespace.name"); ok {
 			namespace = val.Str()
 		}
 
-		// (Opcional) Si tuvieras un label en el namespace llamado "proyecto", 
+		// (Opcional) Si tuvieras un label en el namespace llamado "proyecto",
 		// k8sattributes suele inyectarlo como "k8s.namespace.labels.proyecto".
 		// Podrías hacer un attrs.Get() de eso para agrupar namespaces distintos.
 
@@ -60,7 +60,8 @@ func (r *customRouter) processLogs(ctx context.Context, logs plog.Logs) (plog.Lo
 		streamName := namespace + "-" + r.env
 
 		// 3. Inyectamos el resultado como un nuevo atributo en el log.
-		attrs.PutStr("x_custom_stream", streamName)
+		// attrs.PutStr("x_custom_stream", streamName)
+		attrs.PutStr("_stream_name", streamName)
 	}
 
 	return logs, nil
