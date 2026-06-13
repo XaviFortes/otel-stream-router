@@ -4,6 +4,10 @@ dist:
   output_path: ./dist
   otelcol_version: 0.154.0
 
+extensions:
+  - import: github.com/open-telemetry/opentelemetry-collector-contrib/extension/headerssetterextension
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/headerssetterextension v0.154.0
+
 processors:
   - import: go.opentelemetry.io/collector/processor/batchprocessor
     gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.154.0

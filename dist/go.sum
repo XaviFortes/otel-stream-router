@@ -100,6 +100,10 @@ github.com/modern-go/reflect2 v1.0.3-0.20250322232337-35a7c28c31ee h1:W5t00kpgFd
 github.com/modern-go/reflect2 v1.0.3-0.20250322232337-35a7c28c31ee/go.mod h1:yWuevngMOJpCy52FWWMvUC8ws7m/LJsjYzDa0/r8luk=
 github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 h1:C3w9PqII01/Oq1c1nUAm88MOHcQC9l5mIlSMApZMrHA=
 github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822/go.mod h1:+n7T8mK8HuQTcFwEeznm/DIxMOiR9yIdICNftLE1DvQ=
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/headerssetterextension v0.154.0 h1:MtCRTGSoCKt3VKvJ2w6snjHHNJY4uSxGo3L0TQ4PwJ0=
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/headerssetterextension v0.154.0/go.mod h1:T6qFtBjT+seSMeKIdm0POZw6oLMRksjZqaKJIAY/Uhc=
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/internal/credentialsfile v0.154.0 h1:18AlRAWNCXVwAaIaDfLzy9SZMk9/pbjgQFGnPCAQl0Y=
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/internal/credentialsfile v0.154.0/go.mod h1:DmgMHE51n8CcKWw81i+f7+JpQODs9524mcrujeyUQes=
 github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage v0.154.0 h1:88FnxrbX6+QQNGPJ1Weu7CFWF/LRg2WWNy5bzE21zIU=
 github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage v0.154.0/go.mod h1:RE08WErCvoZPjxx+KuT8ZEkpy/d6uoIyV9MPRXxs/jA=
 github.com/open-telemetry/opentelemetry-collector-contrib/internal/common v0.154.0 h1:5U0Xo9qVtBc9Ul6IFq1489Xn520kcKxOxEGzZQsj+Sc=
